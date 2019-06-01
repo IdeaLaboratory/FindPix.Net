@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:FindPix.Net"
         mc:Ignorable="d"
         Title="{Binding AppTitle}" Height="450" Width="800">
-    <Grid>
-
+    <Grid Background="Gray">
+        <TextBox x:Name="SearchStringTextBox" Height="25" Margin="10,10,102,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding                    
+                    Key="Enter" 
+                    Command="{Binding GetSearchCommand}" 
+                    CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button x:Name="SearchButton" IsEnabled="{Binding ReadyToSearch}" Content="Search" Height="25" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="77" Command="{Binding GetSearchCommand}" RenderTransformOrigin="0.416,1.6"/>
+        <TextBox x:Name="MessageTb" IsReadOnly="True" IsTabStop="True" KeyboardNavigation.TabNavigation="None" Focusable="False" KeyboardNavigation.IsTabStop="True" Background="LightGray" Text="{ Binding Messages}" TextWrapping="Wrap" Margin="10,0,10,5" Height="20" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

@@ -1,4 +1,6 @@
-﻿namespace FindPix.Net.ViewModels
+﻿using System;
+
+namespace FindPix.Net.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
@@ -20,9 +22,32 @@
 
                 return instance;
             }
-        } 
+        }
+
         #endregion
 
+        #region fields
         public string AppTitle { get; set; } = "FindFix.Net";
+
+        string _messages = "Stats OK";
+        public string Messages
+        {
+            get
+            {
+                return _messages;
+            }
+            set
+            {
+                _messages = value;
+                OnPropertyChanged("Messages");
+            }
+        }
+
+        #endregion
+
+        internal void ExecuteSearch()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
