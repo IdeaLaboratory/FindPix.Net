@@ -15,7 +15,8 @@ namespace FindPix.Net.Commands
 
         public void Execute(object parameter)
         {
-            MainWindowViewModel.Instance.ExecuteSearch();
+            MainWindowViewModel.Instance.ExecuteFindPictures();
+            MainWindowViewModel.Instance.ExecuteFindTweets();
         }
     }
 }

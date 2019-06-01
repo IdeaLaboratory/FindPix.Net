@@ -52,23 +52,37 @@ namespace FindPix.Net.ViewModels
             set { searchString = value; }
         }
 
-        List<string> _images = new List<string>();
+        List<string> images = new List<string>();
         public List<string> Images
         {
             get
             {
-                return _images;
+                return images;
             }
             set
             {
-                _images = value;
+                images = value;
+                OnPropertyChanged();
+            }
+        }
+
+        List<string> items = new List<string>();
+        public List<string> Items
+        {
+            get
+            {
+                return items;
+            }
+            set
+            {
+                items = value;
                 OnPropertyChanged();
             }
         }
 
         #endregion
 
-        internal void ExecuteSearch()
+        internal void ExecuteFindPictures()
         {
             var imgs = FlickrService.FlickrService.FindPics(SearchString);
             if (imgs == null)
@@ -78,6 +92,18 @@ namespace FindPix.Net.ViewModels
             }
 
             Images = imgs.ToList();
+        }
+
+        internal void ExecuteFindTweets()
+        {
+            var tweets = TwitterService.TwitterService.FindTweets(searchString);
+            if (tweets == null)
+            {
+                Messages = "No result found";
+                return;
+            }
+
+            Items = tweets.ToList();
         }
     }
 }

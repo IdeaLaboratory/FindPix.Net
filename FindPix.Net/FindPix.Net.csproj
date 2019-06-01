@@ -115,6 +115,10 @@
       <Project>{1ff0391e-a772-4e0b-9fc6-720688a420a8}</Project>
       <Name>FlickrService</Name>
     </ProjectReference>
+    <ProjectReference Include="TwitterService\TwitterService.csproj">
+      <Project>{76972c6c-f85a-4545-8c06-237f20459f03}</Project>
+      <Name>TwitterService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
