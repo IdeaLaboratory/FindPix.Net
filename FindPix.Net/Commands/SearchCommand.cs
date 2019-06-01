@@ -1,5 +1,6 @@
 ﻿using FindPix.Net.ViewModels;
 using System;
+using System.Threading;
 using System.Windows.Input;
 
 namespace FindPix.Net.Commands
@@ -15,8 +16,17 @@ namespace FindPix.Net.Commands
 
         public void Execute(object parameter)
         {
-            MainWindowViewModel.Instance.ExecuteFindPictures();
-            MainWindowViewModel.Instance.ExecuteFindTweets();
+            Thread flickr = new Thread(delegate ()
+            {
+                MainWindowViewModel.Instance.ExecuteFindPictures();
+            });
+            flickr.Start();
+
+            Thread twitter = new Thread(delegate ()
+            {
+                MainWindowViewModel.Instance.ExecuteFindTweets();
+            });
+            twitter.Start();
         }
     }
 }
