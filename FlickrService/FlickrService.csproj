@@ -46,7 +46,7 @@
     <Compile Include="Photo.cs" />
     <Compile Include="Photos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rootobject.cs" />
+    <Compile Include="FlickrData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

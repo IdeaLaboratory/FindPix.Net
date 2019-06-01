@@ -23,7 +23,6 @@ namespace FlickrService
 
         public static IEnumerable<string> FindPics(string Keyword, int PerPage = 20)
         {
-            List<string> _tempImages = new List<string>();
             string html = string.Empty;
             string searchUrl = string.Format(url, api, Keyword, PerPage);
 
@@ -32,18 +31,17 @@ namespace FlickrService
             using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(html)))
             {
                 // Deserialization from JSON  
-                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(Rootobject));
-                Rootobject rootObject = (Rootobject)deserializer.ReadObject(ms);
+                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(FlickrData));
+                FlickrData rootObject = (FlickrData)deserializer.ReadObject(ms);
 
-                if (rootObject.stat != "ok")
-                    return null;
-
-                foreach (var photo in rootObject.photos.photo)
+                if (rootObject.stat == "ok")
                 {
-                    _tempImages.Add(string.Format(photoUrl, photo.farm, photo.server, photo.id, photo.secret));
+                    foreach (var photo in rootObject.photos.photo)
+                    {
+                        yield return string.Format(photoUrl, photo.farm, photo.server, photo.id, photo.secret);
+                    }
                 }
             }
-            return _tempImages;
         }
 
         private static string connect(string searchUrl)
