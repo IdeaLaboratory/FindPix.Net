@@ -110,5 +110,11 @@
   <ItemGroup>
     <Resource Include="search.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlickrService\FlickrService.csproj">
+      <Project>{1ff0391e-a772-4e0b-9fc6-720688a420a8}</Project>
+      <Name>FlickrService</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

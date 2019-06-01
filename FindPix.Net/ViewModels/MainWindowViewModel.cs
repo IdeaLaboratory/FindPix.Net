@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace FindPix.Net.ViewModels
 {
@@ -43,11 +44,40 @@ namespace FindPix.Net.ViewModels
             }
         }
 
+        private string searchString = "nature";
+
+        public string SearchString
+        {
+            get { return searchString; }
+            set { searchString = value; }
+        }
+
+        List<string> _images = new List<string>();
+        public List<string> Images
+        {
+            get
+            {
+                return _images;
+            }
+            set
+            {
+                _images = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         internal void ExecuteSearch()
         {
-            throw new NotImplementedException();
+            var imgs = FlickrService.FlickrService.FindPics(SearchString);
+            if (imgs == null)
+            {
+                Messages = "No result found";
+                return;
+            }
+
+            Images = imgs.ToList();
         }
     }
 }

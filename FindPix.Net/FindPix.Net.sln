@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindPix.Net", "FindPix.Net.csproj", "{EB0DF6BB-1CC9-4326-B333-F6163EDDFB6F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D57BD65D-90CD-4B26-9B75-B8FA6D47CEDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlickrService", "..\FlickrService\FlickrService.csproj", "{1FF0391E-A772-4E0B-9FC6-720688A420A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{EB0DF6BB-1CC9-4326-B333-F6163EDDFB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB0DF6BB-1CC9-4326-B333-F6163EDDFB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB0DF6BB-1CC9-4326-B333-F6163EDDFB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF0391E-A772-4E0B-9FC6-720688A420A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF0391E-A772-4E0B-9FC6-720688A420A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF0391E-A772-4E0B-9FC6-720688A420A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF0391E-A772-4E0B-9FC6-720688A420A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FF0391E-A772-4E0B-9FC6-720688A420A8} = {D57BD65D-90CD-4B26-9B75-B8FA6D47CEDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82C7DD8C-F46A-4369-BD36-AE64141D0BD1}
