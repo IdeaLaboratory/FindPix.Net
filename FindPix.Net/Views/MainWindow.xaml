@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="{Binding AppTitle}" Height="450" Width="800">
     <Window.Resources>
-        <Style TargetType="{x:Type ListBox}">
+        <Style TargetType="{x:Type ListBox}" x:Key="PixListBox">
             <Setter Property="ItemTemplate">
                 <Setter.Value>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="4" CornerRadius="5" Margin="6" >
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2" Margin="3" >
                             <Image Source="{Binding}" Stretch="Fill" Width="200" Height="250"/>
                         </Border>
                     </DataTemplate>
@@ -24,11 +24,10 @@
                     </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter 
-            Property="ScrollViewer.HorizontalScrollBarVisibility" 
-            Value="Disabled" 
-            />
-
+            <Setter
+                Property="ScrollViewer.HorizontalScrollBarVisibility" 
+                Value="Disabled" >
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid Background="Gray">
@@ -46,16 +45,8 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <ListBox ItemsSource="{Binding Images}" Grid.Column="0"/>
-            <ListView ItemsSource="{Binding Items}"  Grid.Column="1">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListBox ItemsSource="{Binding Images}" Grid.Column="0" Style="{StaticResource PixListBox}"/>
+            <ListBox ItemsSource="{Binding Tweets}"  Grid.Column="1" />
         </Grid>
         <TextBox x:Name="MessageTb" IsReadOnly="True" IsTabStop="True" KeyboardNavigation.TabNavigation="None" Focusable="False" KeyboardNavigation.IsTabStop="True" Background="LightGray" Text="{ Binding Messages}" TextWrapping="Wrap" Margin="10,0,10,5" Height="20" VerticalAlignment="Bottom"/>
     </Grid>

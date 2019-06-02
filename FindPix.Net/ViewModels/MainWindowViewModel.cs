@@ -67,7 +67,7 @@ namespace FindPix.Net.ViewModels
         }
 
         List<string> items = new List<string>();
-        public List<string> Items
+        public List<string> Tweets
         {
             get
             {
@@ -90,7 +90,6 @@ namespace FindPix.Net.ViewModels
                 Messages = "No result found";
                 return;
             }
-
             Images = imgs.ToList();
         }
 
@@ -102,8 +101,7 @@ namespace FindPix.Net.ViewModels
                 Messages = "No result found";
                 return;
             }
-
-            Items = tweets.ToList();
+            Tweets = tweets.ToList();
         }
     }
 }
