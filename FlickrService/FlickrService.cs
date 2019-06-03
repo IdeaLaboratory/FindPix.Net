@@ -11,7 +11,7 @@ namespace FlickrService
 {
     public class FlickrService
     {
-        const string url = "https://www.flickr1.com/services/rest/" +
+        const string url = "https://www.flickr.com/services/rest/" +
           "?method=flickr.photos.search" +
           "&api_key={0}" +
           "&tags={1}" +
