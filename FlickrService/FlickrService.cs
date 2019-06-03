@@ -11,7 +11,7 @@ namespace FlickrService
 {
     public class FlickrService
     {
-        const string url = "https://www.flickr.com/services/rest/" +
+        const string url = "https://www.flickr1.com/services/rest/" +
           "?method=flickr.photos.search" +
           "&api_key={0}" +
           "&tags={1}" +
@@ -30,11 +30,18 @@ namespace FlickrService
 
             using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(html)))
             {
-                // Deserialization from JSON  
+                FlickrData rootObject = null;
                 DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(FlickrData));
-                FlickrData rootObject = (FlickrData)deserializer.ReadObject(ms);
+                try
+                {
+                    rootObject = (FlickrData)deserializer.ReadObject(ms);
+                }
+                catch (Exception e)
+                {
 
-                if (rootObject.stat == "ok")
+                }
+
+                if (rootObject?.stat == "ok")
                 {
                     foreach (var photo in rootObject.photos.photo)
                     {

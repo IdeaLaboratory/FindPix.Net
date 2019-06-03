@@ -16,12 +16,19 @@ namespace FindPix.Net.Commands
 
         public void Execute(object parameter)
         {
-            Thread flickr = new Thread(delegate ()
-            {
-                MainWindowViewModel.Instance.ExecuteFindPictures();
-            });
-            flickr.Start();
 
+            try
+            {
+                Thread flickr = new Thread(delegate ()
+              {
+                  MainWindowViewModel.Instance.ExecuteFindPictures();
+              });
+                flickr.Start();
+            }
+            catch (Exception e)
+            {
+
+            }
             Thread twitter = new Thread(delegate ()
             {
                 MainWindowViewModel.Instance.ExecuteFindTweets();

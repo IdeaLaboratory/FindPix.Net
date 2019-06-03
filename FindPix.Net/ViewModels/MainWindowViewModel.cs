@@ -85,9 +85,9 @@ namespace FindPix.Net.ViewModels
         internal void ExecuteFindPictures()
         {
             var imgs = FlickrService.FlickrService.FindPics(SearchString);
-            if (imgs == null)
+            if (imgs == null || imgs.Count() == 0)
             {
-                Messages = "No result found";
+                Messages = "No pic found";
                 return;
             }
             Images = imgs.ToList();
@@ -96,9 +96,9 @@ namespace FindPix.Net.ViewModels
         internal void ExecuteFindTweets()
         {
             var tweets = TwitterService.TwitterService.FindTweets(searchString);
-            if (tweets == null)
+            if (tweets == null || tweets.Count() == 0)
             {
-                Messages = "No result found";
+                Messages = "No tweet found";
                 return;
             }
             Tweets = tweets.ToList();
